@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1086818738482",
+    "project_id": "nfl-franchise-information",
+    "storage_bucket": "nfl-franchise-information.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086818738482:android:0be6c8dc2d9b546f85b72b",
+        "android_client_info": {
+          "package_name": "com.example.nfl_franchise_information"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086818738482-661f148hvit4lnb28qfeq2090gbkbgbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBVCzQjv5YhDY3uBbCTwaXZnaP4rR3YyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086818738482-661f148hvit4lnb28qfeq2090gbkbgbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
