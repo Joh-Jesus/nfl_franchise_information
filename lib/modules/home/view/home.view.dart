@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nfl_franchise_information/modules/home/home_bloc/event/home.event.dart';
 import 'package:nfl_franchise_information/modules/home/home_bloc/home.bloc.dart';
 import 'package:nfl_franchise_information/modules/home/home_bloc/state/home.state.dart';
+import 'package:nfl_franchise_information/utils/interfaces/franchise_model.interface.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -13,14 +14,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   void initState() {
     super.initState();
@@ -29,34 +22,106 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
-        bloc: Modular.get<HomeBloc>(),
-        builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-              title: const Text('NFL Franchise Information'),
-            ),
-            body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Lista das Franquias",
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Colors.red,
+        leading: const Icon(Icons.arrow_back),
+      ),
+      body: BlocBuilder<HomeBloc, HomeState>(
+          bloc: Modular.get<HomeBloc>(),
+          builder: (context, state) {
+            return Column(
+              children: [
+                Visibility(
+                  visible: state is HomeStateSuccess,
+                  child: HomeSuccessWidget(
+                      listOfFranchisesInNfl:
+                          state is HomeStateSuccess ? state.listOfFranchisesInNfl : []),
+                ),
+                Visibility(
+                  visible: state is HomeStateLoading,
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                )
+              ],
+            );
+          }),
+    );
+  }
+}
+
+class HomeSuccessWidget extends StatelessWidget {
+  const HomeSuccessWidget({super.key, required this.listOfFranchisesInNfl});
+  final List<IFranchiseModel> listOfFranchisesInNfl;
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+        child: Expanded(
+          child: ListView.builder(
+            itemCount: listOfFranchisesInNfl.length,
+            itemBuilder: (BuildContext context, int index) {
+              return FranchiseWidget(franchise: listOfFranchisesInNfl[index]);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FranchiseWidget extends StatelessWidget {
+  const FranchiseWidget({super.key, required this.franchise});
+  final IFranchiseModel franchise;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    state is HomeStateSuccess ? state.listOfFranchisesInNfl.first.name : "Erro",
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.network(
+                    franchise.franchiseImg,
+                    width: 48,
+                    height: 48,
                   ),
-                  Text(
-                    '$_counter',
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
+                  Text(franchise.name),
                 ],
               ),
             ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Estado: ${franchise.state}"),
+                  Text("Conferência: ${franchise.conferenceName}"),
+                  Text("Divisão: ${franchise.divisionName}"),
+                ],
+              ),
             ),
-          );
-        });
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -1,5 +1,5 @@
-import 'package:nfl_franchise_information/model/franchise.model.dart';
+import 'package:nfl_franchise_information/utils/interfaces/franchise_model.interface.dart';
 
 abstract class IHomeService {
-  Future<List<FranchiseModel>> getFranchiseOfNlfList();
+  Future<List<IFranchiseModel>> getFranchiseOfNlfList();
 }
