@@ -4,7 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nfl_franchise_information/modules/home/home_bloc/event/home.event.dart';
 import 'package:nfl_franchise_information/modules/home/home_bloc/home.bloc.dart';
 import 'package:nfl_franchise_information/modules/home/home_bloc/state/home.state.dart';
-import 'package:nfl_franchise_information/utils/interfaces/franchise_model.interface.dart';
+import 'package:nfl_franchise_information/modules/home/view/widgets/home_success.widget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -25,10 +25,10 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Lista das Franquias",
+          "Todas as Franquias",
           textAlign: TextAlign.center,
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.grey.shade300,
         leading: const Icon(Icons.arrow_back),
       ),
       body: BlocBuilder<HomeBloc, HomeState>(
@@ -51,77 +51,6 @@ class _HomeViewState extends State<HomeView> {
               ],
             );
           }),
-    );
-  }
-}
-
-class HomeSuccessWidget extends StatelessWidget {
-  const HomeSuccessWidget({super.key, required this.listOfFranchisesInNfl});
-  final List<IFranchiseModel> listOfFranchisesInNfl;
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
-        child: Expanded(
-          child: ListView.builder(
-            itemCount: listOfFranchisesInNfl.length,
-            itemBuilder: (BuildContext context, int index) {
-              return FranchiseWidget(franchise: listOfFranchisesInNfl[index]);
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class FranchiseWidget extends StatelessWidget {
-  const FranchiseWidget({super.key, required this.franchise});
-  final IFranchiseModel franchise;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.network(
-                    franchise.franchiseImg,
-                    width: 48,
-                    height: 48,
-                  ),
-                  Text(franchise.name),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Estado: ${franchise.state}"),
-                  Text("Conferência: ${franchise.conferenceName}"),
-                  Text("Divisão: ${franchise.divisionName}"),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
