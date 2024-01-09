@@ -5,7 +5,7 @@ class FranchiseModel extends IFranchiseModel {
   FranchiseModel({
     required super.name,
     required super.foundationYear,
-    required super.state,
+    required super.country,
     required super.stadium,
     required super.conferenceName,
     required super.divisionName,
@@ -22,7 +22,7 @@ class FranchiseModel extends IFranchiseModel {
   factory FranchiseModel.fromJson(Map<String, dynamic> json) => FranchiseModel(
         name: json["name"],
         foundationYear: json["foundation"],
-        state: json["state"],
+        country: json["state"],
         stadium: json["stadium"],
         conferenceName: json["conference"],
         divisionName: json["division"],

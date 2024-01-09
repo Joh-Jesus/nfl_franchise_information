@@ -2,7 +2,7 @@
 abstract class IFranchiseModel {
   final String name;
   final int foundationYear;
-  final String state;
+  final String country;
   final String stadium;
   final String conferenceName;
   final String divisionName;
@@ -18,7 +18,7 @@ abstract class IFranchiseModel {
   IFranchiseModel({
     required this.name,
     required this.foundationYear,
-    required this.state,
+    required this.country,
     required this.stadium,
     required this.conferenceName,
     required this.divisionName,
