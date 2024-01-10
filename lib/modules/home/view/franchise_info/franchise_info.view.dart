@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nfl_franchise_information/modules/home/view/widgets/info.widget.dart';
 import 'package:nfl_franchise_information/modules/home/view/widgets/info_card.widget.dart';
 import 'package:nfl_franchise_information/utils/formatters/value_cents.formatter.dart';
@@ -13,27 +15,31 @@ class FranchiseInfoWidget extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           franchise.name,
-          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 30),
           textAlign: TextAlign.center,
+          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 30),
         ),
         backgroundColor: Colors.grey.shade300,
-        leading: const Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Modular.to.pop(),
+        ),
       ),
       backgroundColor: Colors.grey.shade50,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                 child: InfoCardWidget(
                   firstTextLeft: "Cidade: ",
                   firstTextRight: franchise.country,
                   secondTextLeft: "Fundação: ",
                   secondTextRight: franchise.foundationYear.toString(),
                   imgUrl: franchise.franchiseImg,
+                  scaleImg: 7.w,
                 )),
             Container(
-              height: 2,
+              height: 2.h,
               width: MediaQuery.of(context).size.width,
               color: Colors.grey.shade300,
             ),
@@ -42,7 +48,7 @@ class FranchiseInfoWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   InfoWidget(
                     textLeft: "Titulos de SuperBowl ",
                     textRight: franchise.superbowlWinner.toString(),
@@ -65,13 +71,13 @@ class FranchiseInfoWidget extends StatelessWidget {
                     textLeft: "Valor",
                     textRight: formatString(franchise.franchiseValue.toString()),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   Container(
                     height: 2,
                     width: MediaQuery.of(context).size.width,
                     color: Colors.grey.shade300,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   const Center(
                     child: Text(
                       "Franchise Player",
@@ -79,22 +85,25 @@ class FranchiseInfoWidget extends StatelessWidget {
                           TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 22),
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         RichText(
                           text: TextSpan(
                             text: "Nome: ",
-                            style: const TextStyle(
-                                color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
+                            style: TextStyle(
+                                color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18.sp),
                             children: [
                               TextSpan(
                                 text: franchise.franchisePlayerName,
-                                style: const TextStyle(
-                                    color: Colors.black, fontWeight: FontWeight.w400, fontSize: 18),
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18.sp,
+                                ),
                               ),
                             ],
                           ),
@@ -102,13 +111,16 @@ class FranchiseInfoWidget extends StatelessWidget {
                         RichText(
                           text: TextSpan(
                             text: "Posição: ",
-                            style: const TextStyle(
-                                color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
+                            style: TextStyle(
+                                color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18.sp),
                             children: [
                               TextSpan(
                                 text: franchise.franchisePlayerPosition,
-                                style: const TextStyle(
-                                    color: Colors.black, fontWeight: FontWeight.w400, fontSize: 18),
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18.sp,
+                                ),
                               ),
                             ],
                           ),

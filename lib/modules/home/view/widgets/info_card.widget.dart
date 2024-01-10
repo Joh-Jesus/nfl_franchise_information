@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InfoCardWidget extends StatelessWidget {
   const InfoCardWidget({
@@ -8,7 +9,7 @@ class InfoCardWidget extends StatelessWidget {
     required this.firstTextRight,
     required this.secondTextLeft,
     required this.secondTextRight,
-    this.scaleImg = 7,
+    required this.scaleImg,
   });
 
   final String imgUrl;
@@ -25,18 +26,18 @@ class InfoCardWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: 80,
-          width: 80,
+          height: 80.h,
+          width: 80.w,
           decoration: BoxDecoration(
             color: Colors.grey.shade200,
-            borderRadius: BorderRadius.circular(48),
+            borderRadius: BorderRadius.circular(48.r),
             image: DecorationImage(
               image: NetworkImage(imgUrl, scale: scaleImg),
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+          padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,28 +45,28 @@ class InfoCardWidget extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   text: firstTextLeft,
-                  style: const TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
+                  style:
+                      TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18.sp),
                   children: [
                     TextSpan(
                       text: firstTextRight,
-                      style: const TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w400, fontSize: 18),
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.w400, fontSize: 18.sp),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               RichText(
                 text: TextSpan(
                   text: secondTextLeft,
-                  style: const TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
+                  style:
+                      TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18.sp),
                   children: [
                     TextSpan(
                       text: secondTextRight,
-                      style: const TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w400, fontSize: 18),
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.w400, fontSize: 18.sp),
                     ),
                   ],
                 ),

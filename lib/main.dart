@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nfl_franchise_information/modules/app.module.dart';
 import 'package:nfl_franchise_information/utils/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,13 +12,21 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Modular.setInitialRoute("$initRoute$homeRoute");
-  runApp(ModularApp(module: AppModule(), child: const NflFranchiseInformation()));
+  runApp(
+    ScreenUtilInit(
+      designSize: const Size(392, 783),
+      builder: (context, child) {
+        return ModularApp(module: AppModule(), child: const NflFranchiseInformation());
+      },
+      minTextAdapt: true,
+      splitScreenMode: true,
+    ),
+  );
 }
 
 class NflFranchiseInformation extends StatelessWidget {
   const NflFranchiseInformation({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(

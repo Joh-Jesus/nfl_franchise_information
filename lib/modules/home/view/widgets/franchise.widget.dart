@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nfl_franchise_information/utils/interfaces/franchise_model.interface.dart';
 
 class FranchiseWidget extends StatelessWidget {
@@ -9,10 +10,10 @@ class FranchiseWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey.shade200,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -25,8 +26,8 @@ class FranchiseWidget extends StatelessWidget {
                 children: [
                   Image.network(
                     franchise.franchiseImg,
-                    width: 48,
-                    height: 48,
+                    width: 48.h,
+                    height: 48.w,
                   ),
                   Text(
                     franchise.name,
@@ -53,7 +54,7 @@ class FranchiseWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   RichText(
                     text: TextSpan(
                       text: "Conferência: ",
@@ -66,7 +67,7 @@ class FranchiseWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   RichText(
                     text: TextSpan(
                       text: "Divisão: ",

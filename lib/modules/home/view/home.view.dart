@@ -24,12 +24,13 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Todas as Franquias",
-          textAlign: TextAlign.center,
+        title: const Center(
+          child: Text(
+            "Todas as Franquias",
+            textAlign: TextAlign.center,
+          ),
         ),
         backgroundColor: Colors.grey.shade300,
-        leading: const Icon(Icons.arrow_back),
       ),
       body: BlocBuilder<HomeBloc, HomeState>(
           bloc: Modular.get<HomeBloc>(),
