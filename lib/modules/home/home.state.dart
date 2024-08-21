@@ -1,7 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:nfl_franchise_information/utils/interfaces/franchise_model.interface.dart';
+import 'package:nfl_franchise_information/core/core.dart';
 
-abstract class HomeState {}
+sealed class HomeState {}
 
 class HomeStateLoading extends HomeState {}
 
@@ -10,4 +9,9 @@ class HomeStateSuccess extends HomeState {
   HomeStateSuccess({
     required this.listOfFranchisesInNfl,
   });
+}
+
+class HomeStateFailure extends HomeState {
+  final String message;
+  HomeStateFailure({required this.message});
 }

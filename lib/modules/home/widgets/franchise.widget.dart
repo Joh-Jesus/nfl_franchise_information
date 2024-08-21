@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nfl_franchise_information/utils/interfaces/franchise_model.interface.dart';
+import 'package:nfl_franchise_information/core/core.dart';
 
 class FranchiseWidget extends StatelessWidget {
   const FranchiseWidget({super.key, required this.franchise});
