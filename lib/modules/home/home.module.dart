@@ -11,7 +11,7 @@ class HomeModule extends Module {
     i.addLazySingleton<IHomeService>(HomeService.new);
     i.addLazySingleton<IHomeRepository>(HomeRepository.new);
     i.addLazySingleton<HomeStore>(HomeStore.new);
-    i.addLazySingleton<FranchiseModelFromJson>(FranchiseModelFromJson.new);
+    i.addLazySingleton<FromJson>(FranchiseModelFromJson.new);
   }
 
   @override

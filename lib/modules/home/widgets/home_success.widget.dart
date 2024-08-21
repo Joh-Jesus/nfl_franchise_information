@@ -7,31 +7,31 @@ import 'package:nfl_franchise_information/utils/routes.dart';
 
 class HomeSuccessWidget extends StatelessWidget {
   const HomeSuccessWidget({super.key, required this.listOfFranchisesInNfl});
+
   final List<IFranchiseModel> listOfFranchisesInNfl;
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 24.w),
-        child: ListView.builder(
-          itemCount: listOfFranchisesInNfl.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(bottom: 12.h),
-                  child: GestureDetector(
-                    child: FranchiseWidget(franchise: listOfFranchisesInNfl[index]),
-                    onTap: () => Modular.to.pushNamed(
-                      "$initRoute$franchiseRoute",
-                      arguments: listOfFranchisesInNfl[index],
-                    ),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+      child: ListView.builder(
+        itemCount: listOfFranchisesInNfl.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(bottom: 12.h),
+                child: GestureDetector(
+                  child: FranchiseWidget(franchise: listOfFranchisesInNfl[index]),
+                  onTap: () => Modular.to.pushNamed(
+                    "$initRoute$franchiseRoute",
+                    arguments: listOfFranchisesInNfl[index],
                   ),
                 ),
-              ],
-            );
-          },
-        ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
