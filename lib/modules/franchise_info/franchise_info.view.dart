@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nfl_franchise_information/modules/home/view/widgets/info.widget.dart';
-import 'package:nfl_franchise_information/modules/home/view/widgets/info_card.widget.dart';
+import 'package:nfl_franchise_information/core/core.dart';
+import 'package:nfl_franchise_information/modules/home/widgets/widgets.dart';
 import 'package:nfl_franchise_information/utils/formatters/value_cents.formatter.dart';
-import 'package:nfl_franchise_information/utils/interfaces/franchise_model.interface.dart';
 
 class FranchiseInfoWidget extends StatelessWidget {
   const FranchiseInfoWidget({super.key, required this.franchise});
