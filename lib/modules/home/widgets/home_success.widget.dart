@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nfl_franchise_information/core/core.dart';
 import 'package:nfl_franchise_information/modules/modules.dart';
 import 'package:nfl_franchise_information/utils/routes.dart';
@@ -23,10 +24,8 @@ class HomeSuccessWidget extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 12.h),
                 child: GestureDetector(
                   child: FranchiseWidget(franchise: listOfFranchisesInNfl[index]),
-                  onTap: () => Modular.to.pushNamed(
-                    "$initRoute$franchiseRoute",
-                    arguments: listOfFranchisesInNfl[index],
-                  ),
+                  onTap: () => GoRouter.of(context)
+                      .pushNamed("$franchiseRoute/${listOfFranchisesInNfl[index].name}"),
                 ),
               ),
             ],

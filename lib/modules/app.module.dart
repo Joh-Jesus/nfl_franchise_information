@@ -5,6 +5,6 @@ import 'package:nfl_franchise_information/utils/routes.dart';
 class AppModule extends Module {
   @override
   void routes(r) {
-    r.module(initRoute, module: HomeModule());
+    //   r.module(initRoute, module: HomeModule());
   }
 }
